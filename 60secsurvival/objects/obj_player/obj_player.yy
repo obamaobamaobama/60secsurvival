@@ -1,11 +1,14 @@
 {
   "spriteId": {
-    "name": "spr_player",
-    "path": "sprites/spr_player/spr_player.yy",
+    "name": "spr_player_walkDown",
+    "path": "sprites/spr_player_walkDown/spr_player_walkDown.yy",
   },
   "solid": false,
-  "visible": false,
-  "spriteMaskId": null,
+  "visible": true,
+  "spriteMaskId": {
+    "name": "spr_player_mask",
+    "path": "sprites/spr_player_mask/spr_player_mask.yy",
+  },
   "persistent": false,
   "parentObjectId": null,
   "physicsObject": false,

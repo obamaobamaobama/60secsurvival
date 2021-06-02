@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_player_walkRight",
-    "path": "sprites/spr_player_walkRight/spr_player_walkRight.yy",
+    "name": "spr_floor",
+    "path": "sprites/spr_floor/spr_floor.yy",
   },
   "solid": false,
   "visible": true,
@@ -28,7 +28,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_playerSprites",
+  "name": "obj_floor",
   "tags": [],
   "resourceType": "GMObject",
 }
