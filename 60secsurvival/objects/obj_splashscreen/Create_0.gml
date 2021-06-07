@@ -1,4 +1,4 @@
 
 
 timer = 0;
-timerMax = 45;
+timerMax = 0;

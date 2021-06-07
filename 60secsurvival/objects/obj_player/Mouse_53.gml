@@ -1,0 +1,3 @@
+
+
+if (!attacking) { playerAttack(); }
