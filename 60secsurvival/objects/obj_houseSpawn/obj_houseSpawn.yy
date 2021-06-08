@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_player_walkRight",
-    "path": "sprites/spr_player_walkRight/spr_player_walkRight.yy",
+    "name": "spr_houseSpawn",
+    "path": "sprites/spr_houseSpawn/spr_houseSpawn.yy",
   },
   "solid": false,
   "visible": true,
@@ -20,7 +20,10 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -28,7 +31,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_playerSprites",
+  "name": "obj_houseSpawn",
   "tags": [],
   "resourceType": "GMObject",
 }
