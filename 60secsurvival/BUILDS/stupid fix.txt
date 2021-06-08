@@ -1,0 +1,9 @@
+@description Use this to fix window focus\
+
+second function
+
+window.focus();
+
+
+
+https://www.reddit.com/r/gamemaker/comments/kfs5cs/keyboard_inputs_no_longer_working_in_html5_game/

@@ -1,8 +1,15 @@
 
 
 scr_setDepth();
+instance_create_depth(x,y-16,-1,obj_player);
 //image_xscale = 2;
 //image_yscale = 2;
+
+var rp = instance_place(x,y,obj_resourceParent);
+if (rp != noone)
+{
+	instance_destroy(rp);
+}
 
 
 // "Health"

@@ -6,9 +6,7 @@ function playerCreate()
 	facing = "D";
 	attacking = false;
 	carryWeight = 0;
-	
-	// Create Player Sprites
-	//instance_create_depth(x, y, -1, obj_playerSprites);
+	scr_setDepth();
 }
 
 
@@ -17,9 +15,7 @@ function playerStep()
 	// DEBUG
 	if (keyboard_check_pressed(ord("R"))) { game_restart(); }
 	
-	// Player Sprites
-	//obj_playerSprites.x = x;
-	//obj_playerSprites.y = y;
+	
 	
 	// Controls
 	var controlUP = _obj_controls.up_check;
