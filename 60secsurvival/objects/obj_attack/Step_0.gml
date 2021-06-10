@@ -1,4 +1,5 @@
-
+x = obj_player.x
+y = obj_player.y
 
 var parent = instance_place(x,y,obj_resourceParent);
 if (parent != noone)

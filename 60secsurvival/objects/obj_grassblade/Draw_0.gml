@@ -1,0 +1,1 @@
+draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,Wave(-6,6,2,offset),c_white,1)

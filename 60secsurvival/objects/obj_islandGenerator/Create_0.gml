@@ -1,5 +1,4 @@
-
-
+randomize();
 GenerateIsland();
 generated = true;
 

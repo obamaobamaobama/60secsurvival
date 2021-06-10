@@ -1,4 +1,4 @@
-
+depth = -y;
 
 if (freshSpawn)
 {

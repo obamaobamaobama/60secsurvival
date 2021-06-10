@@ -1,8 +1,8 @@
 function playerCreate()
 {
 	// Player Stats
-	moveSpeed = 2;
-	moveSpeedCur = 2;
+	moveSpeed = 1;
+	moveSpeedCur = 1;
 	facing = "D";
 	attacking = false;
 	carryWeight = 0;
@@ -55,10 +55,10 @@ function playerStep()
 		attacking = true;
 		var attack = instance_create_depth(x,y,1,obj_attack);
 		attack.creator = "player";
-		if (facing == "R") { attack.image_angle = 0; }
-		if (facing == "U") { attack.image_angle = 90; }
-		if (facing == "L") { attack.image_angle = 180; }
-		if (facing == "D") { attack.image_angle = 270; }
+		//if (facing == "R") { attack.image_angle = 0; }
+		//if (facing == "U") { attack.image_angle = 90; }
+		//if (facing == "L") { attack.image_angle = 180; }
+		//if (facing == "D") { attack.image_angle = 270; }
 	}
 	
 	

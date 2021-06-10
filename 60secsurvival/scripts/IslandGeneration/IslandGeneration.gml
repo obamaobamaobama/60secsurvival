@@ -89,6 +89,7 @@ function DrawIsland()
 			if (grid[# i, j] == floor_)
 			{
 				instance_create_depth((i * tileSize) + 8, (j * tileSize) + 8, -1, obj_resourceParent);
+				instance_create_depth((i * tileSize) + 8, (j * tileSize) + 8, -1, obj_grassblade);
 			}
 		}
 	}
