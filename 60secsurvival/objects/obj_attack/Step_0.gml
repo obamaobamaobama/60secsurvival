@@ -26,3 +26,10 @@ if (parent != noone)
 		if (parent.hhealth < 1) { instance_destroy(parent) }
 	}
 }
+
+
+var enemy = instance_place(x,y,obj_enemy);
+if (enemy != noone)
+{
+	scr_enemyAttacked(enemy);
+}

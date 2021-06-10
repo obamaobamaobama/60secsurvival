@@ -1,12 +1,13 @@
 function playerCreate()
 {
 	// Player Stats
-	moveSpeed = 1;
+	moveSpeed = 2
 	moveSpeedCur = 1;
 	facing = "D";
 	attacking = false;
 	carryWeight = 0;
 	scr_setDepth();
+	swimming = false;
 }
 
 
@@ -27,25 +28,67 @@ function playerStep()
 	
 	
 	moveSpeedCur = moveSpeed  - (carryWeight/50);
+	if (swimming) { moveSpeedCur = moveSpeedCur / 2; }
 	if (moveSpeedCur < 1) { moveSpeedCur = 1; }
 	
-	if (controlUP && !place_meeting(x,y-2,obj_wall)) { y -= moveSpeedCur }
+	// Before swimming was added
+	/*if (controlUP && !place_meeting(x,y-2,obj_wall)) { y -= moveSpeedCur }
 	if (controlDOWN && !place_meeting(x,y+2,obj_wall)) { y += moveSpeedCur; }
 	if (controlLEFT && !place_meeting(x-2,y,obj_wall)) { x -= moveSpeedCur; }
-	if (controlRIGHT && !place_meeting(x+2,y,obj_wall)) { x += moveSpeedCur; }
+	if (controlRIGHT && !place_meeting(x+2,y,obj_wall)) { x += moveSpeedCur; }*/
 	
-	if (controlUP && facing != "U") { facing = "U"; sprite_index = spr_player_walkUp image_xscale = 1;}
-	if (controlDOWN && facing != "D") { facing = "D"; sprite_index = spr_player_walkDown; image_xscale = 1;}
-	if (controlLEFT && facing != "L") { facing = "L"; sprite_index = spr_player_walkRight; image_xscale = -1;}
-	if (controlRIGHT && facing != "R") { facing = "R"; sprite_index = spr_player_walkRight; image_xscale = 1;}
 	
-	if (!controlRIGHT && !controlUP && !controlDOWN && !controlLEFT) { image_speed = 0; image_index = 0;}
+	// After swimming was added
+	if (controlUP && y > 0 + (sprite_height/3)) { y -= moveSpeedCur }
+	if (controlDOWN && y < room_height - (sprite_height/3)) { y += moveSpeedCur; }
+	if (controlLEFT && x > 0 + (sprite_width/3)) { x -= moveSpeedCur; }
+	if (controlRIGHT && x < room_width - (sprite_width/3)) { x += moveSpeedCur; }
+	
+	
+	if (!swimming)
+	{
+		if (controlUP && facing != "U") { facing = "U"; sprite_index = spr_player_walkUp image_xscale = 1;}
+		if (controlDOWN && facing != "D") { facing = "D"; sprite_index = spr_player_walkDown; image_xscale = 1;}
+		if (controlLEFT && facing != "L") { facing = "L"; sprite_index = spr_player_walkRight; image_xscale = -1;}
+		if (controlRIGHT && facing != "R") { facing = "R"; sprite_index = spr_player_walkRight; image_xscale = 1;}
+		
+		if (!controlRIGHT && !controlUP && !controlDOWN && !controlLEFT) { image_speed = 0; image_index = 0;}
+		else
+		{image_speed = 1;}
+	
+	
+	
+		var wall = instance_place(x,y,obj_wall);
+		if (wall != noone && !place_meeting(wall.x, wall.y, obj_resourceParent))
+		{
+			swimming = true;
+			sprite_index = spr_player_swimming;
+		}
+	}
 	else
-	{image_speed = 1;}
+	{
+		var wall = instance_place(x,y,obj_wall);
+		var orp = instance_place(x,y,obj_resourceParent);
+		if (wall == noone && orp == noone)
+		{
+			swimming = false;
+		}
+	}
 	
 	
 	
-	if (controlB && controlBheld < 3 && !attacking)
+	
+	
+	if mouse_check_button_pressed(mb_left) or mouse_check_button_released(mb_left)
+	{
+		if (attacking == 0 && !swimming)
+		{
+			playerAttack();
+		}
+	}
+	
+	//if (controlB && controlBheld < 3 && !attacking && !swimming)
+	if (controlB && controlBheld < 15 && attacking == 0 && !swimming)
 	{
 		playerAttack();
 	}

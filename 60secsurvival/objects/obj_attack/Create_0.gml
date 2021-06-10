@@ -4,7 +4,7 @@ image_speed = 2;
 
 creator = "";
 
-depth = -99999999;
+depth = -999;
 
 image_angle = point_direction(obj_player.x,obj_player.y,mouse_x,mouse_y);
 direction = image_angle;
