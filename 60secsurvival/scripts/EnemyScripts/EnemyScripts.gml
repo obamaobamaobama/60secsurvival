@@ -14,6 +14,7 @@ function scr_enemyCreate(_enemyType)
 		healthh = 1;
 		followOffsetX = random_range(-16,16);
 		followOffsetY = random_range(-16,16);
+		attackPower = 1;
 	}
 }
 

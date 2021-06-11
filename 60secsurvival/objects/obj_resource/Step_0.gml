@@ -51,7 +51,30 @@ if (held == 1)
 	place += spd;
 	
 	if (trg == obj_house) { length -= 0.01 * spd; spd += 0.2; }
-	if (length < 1) { shaking = true; obj_house.shaking = true; HouseDeposit(worth); instance_destroy(); }
+	if (length < 1)
+	{
+		if (sprite_index == spr_rock)
+		{
+			if (_obj_round_manager.houseAmountOfRocks <= (_obj_round_manager.houseRequiresXrocks - worth))
+			{
+				shaking = true;
+				obj_house.shaking = true;
+				_obj_round_manager.houseAmountOfRocks += worth;
+				HouseDeposit(worth);
+			}
+		}
+		if (sprite_index == spr_log)
+		{
+			if (_obj_round_manager.houseAmountOfWood <= (_obj_round_manager.houseRequiresXwood - worth))
+			{
+				shaking = true;
+				obj_house.shaking = true;
+				_obj_round_manager.houseAmountOfWood += worth;
+				HouseDeposit(worth);
+			}
+		}
+		instance_destroy();
+		}
 }
 
 

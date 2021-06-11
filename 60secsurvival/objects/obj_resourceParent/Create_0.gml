@@ -1,5 +1,5 @@
 var deleteMe = irandom_range(1,100);
-if (deleteMe > 6) { instance_destroy(); } else { _round_manager.secondsBeforeNight += _obj_game_manager.resourceTimeWorth; }
+if (deleteMe > 6) { instance_destroy(); } else { _obj_round_manager.secondsBeforeNight += _obj_game_manager.resourceTimeWorth; }
 
 dropID = choose("tree", "rock");
 if (dropID == "tree") { sprite_index = spr_tree; }
@@ -19,5 +19,24 @@ var rp = instance_place(x,y,obj_resourceParent);
 if (rp != noone)
 {
 	instance_destroy(rp);
-	_round_manager.secondsBeforeNight -= _obj_game_manager.resourceTimeWorth;
+	_obj_round_manager.secondsBeforeNight -= _obj_game_manager.resourceTimeWorth;
+}
+else
+{
+if (deleteMe != 0 && deleteMe <= 6)
+	{
+		if (dropID == "tree")
+		{
+			if (_obj_round_manager.resourceSearch == 1) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(round(hhealth/2),hhealth)); }
+			if (_obj_round_manager.resourceSearch == 2) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(0,hhealth)); }
+			if (_obj_round_manager.resourceSearch == 3) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(0,hhealth-1)); }
+			
+		}
+		if (dropID == "rock")
+		{
+			if (_obj_round_manager.resourceSearch == 1) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(0,hhealth)); }
+			if (_obj_round_manager.resourceSearch == 2) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(round(hhealth/2),hhealth)); }
+			if (_obj_round_manager.resourceSearch == 3) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(0,hhealth-1)); }
+		}
+	}
 }

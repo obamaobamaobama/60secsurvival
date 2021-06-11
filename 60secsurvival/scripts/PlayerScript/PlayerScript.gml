@@ -8,6 +8,7 @@ function playerCreate()
 	carryWeight = 0;
 	scr_setDepth();
 	swimming = false;
+	healthh = 5;
 }
 
 
@@ -105,10 +106,11 @@ function playerStep()
 	}
 	
 	
-	// idk for now, maybe use this for damange from enemies
-	var resource = instance_place(x,y,obj_resource);
-	if (resource != noone)
+	// Hurt by enemy
+	var enemy = instance_place(x,y,obj_enemy);
+	if (enemy != noone)
 	{
-		// stuff
+		healthh -= enemy.attackPower;
+		instance_destroy(enemy);
 	}
 }
