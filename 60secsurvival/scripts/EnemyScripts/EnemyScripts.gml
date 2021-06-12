@@ -2,6 +2,9 @@
 
 function scr_enemyCreate(_enemyType)
 {
+	// DEBUG
+	instance_destroy();
+	
 	dead = false;
 	
 	// Set sprites

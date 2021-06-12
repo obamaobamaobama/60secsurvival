@@ -40,3 +40,6 @@ if (deleteMe != 0 && deleteMe <= 6)
 		}
 	}
 }
+
+checkTimer = 0;
+checkTimerMAX = 120;

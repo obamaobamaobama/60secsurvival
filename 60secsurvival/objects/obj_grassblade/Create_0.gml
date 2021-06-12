@@ -9,3 +9,7 @@ if (rp != noone)
 {
 	instance_destroy(self);
 }
+
+
+checkTimer = 0;
+checkTimerMAX = 120;

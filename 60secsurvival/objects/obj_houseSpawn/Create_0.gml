@@ -1,6 +1,8 @@
 
 
-//attempts = 0;
+attempts = 0;
+spriteWidth = sprite_width;
+spriteHeight = sprite_height;
 
 // Main Direction (horizontal, vertical)
 md = choose("h", "v");

@@ -4,7 +4,7 @@
     "path": "sprites/spr_darken/spr_darken.yy",
   },
   "solid": false,
-  "visible": false,
+  "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": null,

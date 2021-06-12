@@ -6,5 +6,5 @@ if (timer < timerMax)
 }
 else
 {
-	room_goto(rm_gameplayTest);
+	room_goto(rm_mainMenu);
 }

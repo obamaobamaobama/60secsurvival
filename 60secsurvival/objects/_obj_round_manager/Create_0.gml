@@ -13,7 +13,9 @@ secondsBeforeNight = 1;
 night = false;
 
 
-//audio_play_sound(bgm_The_Unknown, 1, true);
+audio_play_sound(bgm_The_Unknown, 1, true);
+audio_play_sound(bgm_The_Unknown2, 1, true);
+
 
 
 // House requirements
@@ -28,3 +30,8 @@ houseRequiresXrocks = 0;
 
 decideTotalTimer = 0;
 decideTotalTimerMAX = 60;
+
+
+
+_obj_game_manager._audioBGMcurrent = 1;
+_obj_game_manager._audioBGMcurrent2 = 0;

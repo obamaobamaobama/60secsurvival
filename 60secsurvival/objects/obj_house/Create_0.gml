@@ -3,6 +3,8 @@
 scr_setDepth();
 instance_create_depth(x,y-16,-1,obj_player);
 
+obj_fadeIn.fadeIn = true;
+
 
 var rp = instance_place(x,y,obj_resourceParent);
 if (rp != noone)
@@ -17,7 +19,7 @@ if (gb != noone)
 }
 
 // DEBUG
-instance_create_depth(x+32,y+32,-1,obj_enemy);
+//instance_create_depth(x+32,y+32,-1,obj_enemy);
 
 
 // "Health"

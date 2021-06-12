@@ -12,8 +12,11 @@ var secondsRemaining = secondsBeforeNight - secondsInRound
 if (secondsRemaining < 0 && !night)
 {
 	audio_stop_sound(bgm_The_Unknown);
-	//audio_play_sound(bgm_psycho_robot_cannibals,1,true);
-	instance_destroy(obj_darken);
+	audio_stop_sound(bgm_The_Unknown2);
+	audio_play_sound(bgm_psycho_robot_cannibals,1,true);
+	audio_play_sound(bgm_psycho_robot_cannibals2,1,true);
+	obj_darken.visible = false;
+	//instance_destroy(obj_darken);
 	night = true;
 	
 	// Change this later to a more random spawn
@@ -39,8 +42,8 @@ if (decideTotalTimer < decideTotalTimerMAX)
 
 
 
-show_debug_message("have" + string(houseAmountOfRocks+houseAmountOfWood));
+//show_debug_message("have" + string(houseAmountOfRocks+houseAmountOfWood));
 if (instance_number(obj_house) != 0)
 {
-show_debug_message("house" + string(obj_house.tier4));
+//show_debug_message("house" + string(obj_house.tier4));
 }

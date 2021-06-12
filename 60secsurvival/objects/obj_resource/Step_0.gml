@@ -29,7 +29,7 @@ if (held == 0)
 	{
 		if (distance_to_object(trg) > 1)
 		{
-			move_towards_point(trg.x, trg.y, obj_player.moveSpeedCur)
+			move_towards_point(trg.x, trg.y, obj_player.moveSpeedCur+0.1)
 		}
 		else
 		{
@@ -50,7 +50,7 @@ if (held == 1)
 	y = trg.y + lengthdir_y(length, place);
 	place += spd;
 	
-	if (trg == obj_house) { length -= 0.01 * spd; spd += 0.2; }
+	if (trg == obj_house) { length -= 0.01 * spd; spd += 0.75; }
 	if (length < 1)
 	{
 		if (sprite_index == spr_rock)
