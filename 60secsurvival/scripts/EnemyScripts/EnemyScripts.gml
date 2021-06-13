@@ -34,7 +34,8 @@ function scr_enemyCreate(_enemyType)
 	
 	if (_enemyType == "frog")
 	{
-		sprite_index = spr_frog;
+		sprite_index = spr_frogLand;
+		image_index = 2;
 		target = obj_player;
 		jumpTimer = 0;
 		jumpTimerMAX = 30;
@@ -166,7 +167,7 @@ function scr_frog()
 		{
 			if (jumpingTimer < jumpingTimerMAX)
 			{
-				image_index = 1;
+				if (sprite_index != spr_frogJump) { sprite_index = spr_frogJump; }
 				jumpingTimer++;
 				if (distance_to_point(targetPosX,targetPosY) > 1)
 				{
@@ -175,8 +176,8 @@ function scr_frog()
 			}
 			else
 			{
+				if (sprite_index != spr_frogLand) { sprite_index = spr_frogLand; }
 				speeed = random_range(0.5,2);
-				image_index = 0;
 				jumpingTimer = 0;
 				jumpingTimerMAX = irandom_range(10,30)*speeed;
 				speed = 0;

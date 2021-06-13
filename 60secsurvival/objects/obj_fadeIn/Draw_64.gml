@@ -6,7 +6,7 @@ if (fadeIn)
 	if (fadeInTimer > 60)
 	{
 	fade -= 0.02;
-	fade1 -= 0.03;
+	if (fade1 > 0) { fade1 -= 0.03; }
 	}
 }
 
@@ -15,8 +15,9 @@ if (fadeIn)
 depth = -10000;
 draw_sprite_ext(spr_darken,0,0,0,100,100,0,c_white,fade);
 
-if (fade < 0) { instance_destroy(); }
-
+if (fade < 0.1) { instance_destroy(); }
+if (fade < 0) { fade = 0.05; }
+if (fade1 < 0.1) { fade1 = 0; }
 
 
 draw_set_valign(fa_middle)

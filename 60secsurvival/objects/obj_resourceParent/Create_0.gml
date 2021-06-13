@@ -43,3 +43,5 @@ if (deleteMe != 0 && deleteMe <= 6)
 
 checkTimer = 0;
 checkTimerMAX = 120;
+
+display_set_gui_size(view_wport[0], view_hport[0]);

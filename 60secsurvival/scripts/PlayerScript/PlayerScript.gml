@@ -11,6 +11,7 @@ function playerCreate()
 	healthh = _obj_game_manager.playerHealth;
 	dead = false;
 	deathSpin = choose(-5,5);
+	footStep = 2;
 }
 
 
@@ -64,8 +65,8 @@ function playerStep()
 		else
 		{ image_speed = 1; }
 		
-		if (image_index == 1) { audio_play_sound(sfx_footstep1,1,0); }
-		if (image_index == 3) { audio_play_sound(sfx_footstep2,1,0); }
+		if (image_index == 1 && footStep != 1) { audio_play_sound(sfx_footstep1,1,0); footStep = 1; }
+		if (image_index == 3 && footStep != 2) { audio_play_sound(sfx_footstep2,1,0); footStep = 2; }
 	
 	
 	

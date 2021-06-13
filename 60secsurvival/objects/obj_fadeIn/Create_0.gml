@@ -25,3 +25,5 @@ quote = choose
 "south west first night",
 "have you tried pressing l?"
 );
+
+display_set_gui_size(view_wport[0], view_hport[0]);

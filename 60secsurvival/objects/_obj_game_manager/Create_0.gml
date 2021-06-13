@@ -17,3 +17,7 @@ _audioSFXlevelPlayer = 1;
 _audioBGMcurrent = 1;
 _audioBGMcurrent2 = 0;
 _audioSFXlevelCurrent = 1;
+
+
+cursor_sprite = spr_mouse;
+window_set_cursor(cr_none);

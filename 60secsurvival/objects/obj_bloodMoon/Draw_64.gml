@@ -18,10 +18,12 @@ else
 		//audio_play_sound(bgm_psycho_robot_cannibals2,1,true);
 	}
 	
-	if (alpha < 0)
+	if (alpha < 0.1)
 	{
 		instance_destroy();
 	}
+	
+	if (alpha < 0) { alpha = 0.05; }
 }
 
 
