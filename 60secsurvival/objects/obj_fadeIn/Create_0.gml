@@ -20,8 +20,8 @@ draw_set_font(bitmapFont);
 randomize();
 quote = choose
 (
-"left click to attack",
 "ants can't swim",
-"tom fulp rules",
-"i love taio cruz"
+"i love taio cruz",
+"south west first night",
+"have you tried pressing l?"
 );

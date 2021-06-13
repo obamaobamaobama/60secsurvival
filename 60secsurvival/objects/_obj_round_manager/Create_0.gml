@@ -6,7 +6,11 @@ secondsInRound = 0;
 
 
 // Dynamically adjusted
-secondsBeforeNight = 1;
+secondsBeforeNight = 2;
+if (_obj_game_manager.nightsSurvived <= 25)
+{
+	secondsBeforeNight -= (_obj_game_manager.nightsSurvived/10);
+}
 
 
 // When true enemies spawn
@@ -29,7 +33,7 @@ houseRequiresXwood = 0;
 houseRequiresXrocks = 0;
 
 decideTotalTimer = 0;
-decideTotalTimerMAX = 60;
+decideTotalTimerMAX = 120;
 
 
 

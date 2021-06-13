@@ -1,7 +1,10 @@
 
 
 // Add 1 per second
+if (instance_number(obj_fadeIn) == 0)
+{
 secondsInRound += 1/room_speed;
+}
 
 
 var secondsRemaining = secondsBeforeNight - secondsInRound
@@ -13,14 +16,14 @@ if (secondsRemaining < 0 && !night)
 {
 	audio_stop_sound(bgm_The_Unknown);
 	audio_stop_sound(bgm_The_Unknown2);
-	audio_play_sound(bgm_psycho_robot_cannibals,1,true);
-	audio_play_sound(bgm_psycho_robot_cannibals2,1,true);
+	instance_create_depth(x,y,-1,obj_bloodMoon);
+	audio_play_sound(sfx_churchBell,1,0);
 	obj_darken.visible = false;
 	//instance_destroy(obj_darken);
 	night = true;
 	
-	// Change this later to a more random spawn
-	instance_create_depth(room_width/2, room_height/2, -1, obj_enemy);
+	//
+	instance_create_depth(room_width/2, room_height/2, -1, obj_enemySpawner);
 }
 
 

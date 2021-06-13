@@ -4,6 +4,8 @@ y = obj_player.y
 var parent = instance_place(x,y,obj_resourceParent);
 if (parent != noone)
 {
+	obj_player.attackTimer = obj_player.attackTimerMAX+1;
+	
 	if (!parent.dropping)
 	{
 		parent.dropping = true;
@@ -11,11 +13,15 @@ if (parent != noone)
 		
 		if (parent.dropID == "tree")
 		{
+			var sfx = choose(sfx_tree1,sfx_tree2,sfx_tree3);
+			audio_play_sound(sfx,1,0);
 			resource.sprite_index = spr_log;
 		}
 		
 		if (parent.dropID == "rock")
 		{
+			var sfx = choose(sfx_rock1,sfx_rock2,sfx_rock3,sfx_rock4);
+			audio_play_sound(sfx,1,0);
 			resource.sprite_index = spr_rock;
 		}
 		

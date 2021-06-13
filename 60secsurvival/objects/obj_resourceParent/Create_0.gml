@@ -7,7 +7,7 @@ if (dropID == "rock") { sprite_index = spr_stone; }
 dropping = false;
 
 offset = random_range(-1,1);
-hhealth = 4;
+hhealth = irandom_range(2,5);
 starthealth = hhealth;
 bumpscale = 1;
 
@@ -28,15 +28,15 @@ if (deleteMe != 0 && deleteMe <= 6)
 		if (dropID == "tree")
 		{
 			if (_obj_round_manager.resourceSearch == 1) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(round(hhealth/2),hhealth)); }
-			if (_obj_round_manager.resourceSearch == 2) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(0,hhealth)); }
-			if (_obj_round_manager.resourceSearch == 3) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(0,hhealth-1)); }
+			if (_obj_round_manager.resourceSearch == 2) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(1,hhealth)); }
+			if (_obj_round_manager.resourceSearch == 3) { _obj_round_manager.houseRequiresXwood += (hhealth-random_range(1,hhealth-1)); }
 			
 		}
 		if (dropID == "rock")
 		{
-			if (_obj_round_manager.resourceSearch == 1) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(0,hhealth)); }
+			if (_obj_round_manager.resourceSearch == 1) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(1,hhealth)); }
 			if (_obj_round_manager.resourceSearch == 2) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(round(hhealth/2),hhealth)); }
-			if (_obj_round_manager.resourceSearch == 3) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(0,hhealth-1)); }
+			if (_obj_round_manager.resourceSearch == 3) { _obj_round_manager.houseRequiresXrocks += (hhealth-random_range(1,hhealth-1)); }
 		}
 	}
 }

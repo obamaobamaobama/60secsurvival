@@ -1,14 +1,14 @@
 function playerCreate()
 {
 	// Player Stats
-	moveSpeed = 2
+	moveSpeed = 1.5;
 	moveSpeedCur = 1;
 	facing = "D";
 	attacking = false;
 	carryWeight = 0;
 	scr_setDepth();
 	swimming = false;
-	healthh = 5;
+	healthh = _obj_game_manager.playerHealth;
 	dead = false;
 	deathSpin = choose(-5,5);
 }
@@ -17,7 +17,8 @@ function playerCreate()
 function playerStep()
 {
 	// DEBUG
-	//if (keyboard_check_pressed(ord("R"))) { room_restart(); }
+	if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); room_restart(); }
+	if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); room_goto(rm_mainMenu); }
 	
 	
 	
@@ -26,21 +27,23 @@ function playerStep()
 	var controlDOWN = _obj_controls.down_check;
 	var controlLEFT = _obj_controls.left_check;
 	var controlRIGHT = _obj_controls.right_check;
-	var controlB = _obj_controls.b_check;
-	var controlBheld = _obj_controls.b_heldTime;
 	
 	
 	if (!dead)
 	{
 	moveSpeedCur = moveSpeed  - (carryWeight/50);
 	if (swimming) { moveSpeedCur = moveSpeedCur / 2; }
-	if (moveSpeedCur < 1) { moveSpeedCur = 1; }
+	var movement = controlUP + controlDOWN + controlLEFT + controlRIGHT;
+	if (movement > 1) { moveSpeedCur = moveSpeedCur - (moveSpeedCur/15); }
+	if (moveSpeedCur < 0.1) { moveSpeedCur = 0.1; }
+	
 	
 	// Before swimming was added
 	/*if (controlUP && !place_meeting(x,y-2,obj_wall)) { y -= moveSpeedCur }
 	if (controlDOWN && !place_meeting(x,y+2,obj_wall)) { y += moveSpeedCur; }
 	if (controlLEFT && !place_meeting(x-2,y,obj_wall)) { x -= moveSpeedCur; }
 	if (controlRIGHT && !place_meeting(x+2,y,obj_wall)) { x += moveSpeedCur; }*/
+	
 	
 	
 	// After swimming was added
@@ -60,6 +63,9 @@ function playerStep()
 		if (!controlRIGHT && !controlUP && !controlDOWN && !controlLEFT) { image_speed = 0; image_index = 0;}
 		else
 		{ image_speed = 1; }
+		
+		if (image_index == 1) { audio_play_sound(sfx_footstep1,1,0); }
+		if (image_index == 3) { audio_play_sound(sfx_footstep2,1,0); }
 	
 	
 	
@@ -67,6 +73,7 @@ function playerStep()
 		if (wall != noone && !place_meeting(wall.x, wall.y, obj_resourceParent))
 		{
 			swimming = true;
+			facing = "";
 			sprite_index = spr_player_swimming;
 			_obj_game_manager._audioBGMcurrent = 0;
 			_obj_game_manager._audioBGMcurrent2 = 1;
@@ -87,6 +94,23 @@ function playerStep()
 	
 	
 	
+	function playerAttack()
+	{
+		if (attackTimer >= attackTimerMAX)
+		{
+			var sfx = choose(sfx_attack1,sfx_attack2,sfx_attack3);
+			audio_play_sound(sfx,1,0);
+			attacking = true;
+			attackTimer = 0;
+			var attack = instance_create_depth(x,y,1,obj_attack);
+			attack.creator = "player";
+			//if (facing == "R") { attack.image_angle = 0; }
+			//if (facing == "U") { attack.image_angle = 90; }
+			//if (facing == "L") { attack.image_angle = 180; }
+			//if (facing == "D") { attack.image_angle = 270; }
+		}
+	}
+	
 	
 	if mouse_check_button_pressed(mb_left) or mouse_check_button_released(mb_left)
 	{
@@ -96,30 +120,19 @@ function playerStep()
 		}
 	}
 	
-	//if (controlB && controlBheld < 3 && !attacking && !swimming)
-	if (controlB && controlBheld < 15 && attacking == 0 && !swimming)
-	{
-		playerAttack();
-	}
-	
-	function playerAttack()
-	{
-		attacking = true;
-		var attack = instance_create_depth(x,y,1,obj_attack);
-		attack.creator = "player";
-		//if (facing == "R") { attack.image_angle = 0; }
-		//if (facing == "U") { attack.image_angle = 90; }
-		//if (facing == "L") { attack.image_angle = 180; }
-		//if (facing == "D") { attack.image_angle = 270; }
-	}
-	
 	
 	// Hurt by enemy
 	var enemy = instance_place(x,y,obj_enemy);
-	if (enemy != noone)
+	if (enemy != noone && enemy.spawned)
 	{
-		healthh -= enemy.attackPower;
-		instance_destroy(enemy);
+		if (hurtTimer >= hurtTimerMAX)
+		{
+			healthh -= enemy.attackPower;
+			sfx = choose(sfx_hurt1,sfx_hurt2,sfx_hurt3,sfx_hurt4,sfx_hurt5,sfx_hurt6,sfx_hurt7,sfx_hurt8);
+			audio_play_sound(sfx,1,0);
+			hurtTimer = 0;
+			enemy.dead = true;
+		}
 	}
 	
 	
@@ -128,6 +141,7 @@ function playerStep()
 	if (house != noone && house.currentTier == 4)
 	{
 		audio_stop_all();
+		_obj_game_manager.playerHealth = healthh;
 		_obj_game_manager.nightsSurvived += 1;
 		room_goto(rm_gameplay);
 	}
@@ -144,8 +158,8 @@ function playerStep()
 	{
 		// IF DEAD
 		// NG API (Add highscore)
-		if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_gameplay); }
-		if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_mainMenu); }
+		if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_gameplay); _obj_game_manager.playerHealth = 5; }
+		if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_mainMenu); _obj_game_manager.playerHealth = 5 }
 		
 		_obj_game_manager._audioBGMcurrent = 0;
 		_obj_game_manager._audioBGMcurrent2 = 0;

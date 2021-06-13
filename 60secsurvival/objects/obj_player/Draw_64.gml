@@ -28,6 +28,13 @@ if (healthh == 5) { healthhhhh = "AAAAA"; }
 draw_text(8,view_get_hport(0)-12,healthhhhh);
 
 
+if (hurtTimer < hurtTimerMAX)
+{
+	hurtTimer++;
+	draw_sprite_ext(spr_wall,0,view_get_wport(0)/2,view_get_hport(0)/2,1000,1000,0,c_white,0.1);
+}
+
+
 
 
 if (dead)

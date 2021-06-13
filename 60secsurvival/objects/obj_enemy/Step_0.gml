@@ -13,3 +13,5 @@ else
 {
 	scr_enemyStep(enemyType);
 }
+
+depth = -y;

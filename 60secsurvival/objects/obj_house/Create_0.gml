@@ -18,8 +18,6 @@ if (gb != noone)
 	instance_destroy(gb);
 }
 
-// DEBUG
-//instance_create_depth(x+32,y+32,-1,obj_enemy);
 
 
 // "Health"

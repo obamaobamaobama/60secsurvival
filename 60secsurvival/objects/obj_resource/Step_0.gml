@@ -18,10 +18,12 @@ if (freshSpawn)
 
 if (held == 0)
 {
-	if (distance_to_object(trg) < 16)
+	if (distance_to_object(trg) < 16 && !suckIn)
 	{
 		suckIn = 1;
 		shaking = true;
+		var sfx = choose(sfx_pop1,sfx_pop2);
+		audio_play_sound(sfx,1,0);
 	}
 	
 	

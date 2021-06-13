@@ -83,21 +83,28 @@ else
 	
 	
 	
+	if (attempts == 20)
+	{
+		spriteWidth = spriteWidth/4;
+		spriteHeight = spriteHeight/4;
+	}
+	
 	if (attempts == 40)
 	{
 		spriteWidth = spriteWidth/4;
 		spriteHeight = spriteHeight/4;
 	}
 	
-	if (attempts == 80)
+	if (attempts == 60)
 	{
 		spriteWidth = spriteWidth/4;
 		spriteHeight = spriteHeight/4;
 	}
 	
-	if (attempts == 120)
+	
+	if (attempts > 80)
 	{
-		spriteWidth = spriteWidth/4;
-		spriteHeight = spriteHeight/4;
+		spriteWidth = 16;
+		spriteHeight = 16;
 	}
 }

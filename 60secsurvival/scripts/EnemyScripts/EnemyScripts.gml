@@ -3,7 +3,7 @@
 function scr_enemyCreate(_enemyType)
 {
 	// DEBUG
-	instance_destroy();
+	//instance_destroy();
 	
 	dead = false;
 	
@@ -12,18 +12,47 @@ function scr_enemyCreate(_enemyType)
 	{
 		sprite_index = spr_ant;
 		target = obj_player;
-		chaseSpeed = 1;
-		walkAroundSpeed = 0.75;
+		chaseSpeed = obj_player.moveSpeed - (obj_player.moveSpeed/10);
+		walkAroundSpeed = obj_player.moveSpeed - (obj_player.moveSpeed/25);;
 		healthh = 1;
 		followOffsetX = random_range(-16,16);
 		followOffsetY = random_range(-16,16);
 		attackPower = 1;
+	}
+	
+	
+	if (_enemyType == "snake")
+	{
+		sprite_index = spr_snake;
+		target = obj_player;
+		chaseSpeed = obj_player.moveSpeed - (obj_player.moveSpeed/40);
+		healthh = 1;
+		followOffsetX = random_range(-16,16);
+		followOffsetY = random_range(-16,16);
+		attackPower = 1;
+	}
+	
+	if (_enemyType == "frog")
+	{
+		sprite_index = spr_frog;
+		target = obj_player;
+		jumpTimer = 0;
+		jumpTimerMAX = 30;
+		jumpingTimer = 0;
+		jumpingTimerMAX = 60;
+		healthh = 1;
+		attackPower = 1;
+		targetPosX = obj_player.x;
+		targetPosY = obj_player.y;
+		speeed = 1;
 	}
 }
 
 function scr_enemyStep(_enemyType)
 {
 	if (_enemyType == "ant") { scr_ant(); }
+	if (_enemyType == "snake") { scr_snake(); }
+	if (_enemyType == "frog") { scr_frog(); }
 }
 
 
@@ -32,7 +61,7 @@ function scr_ant()
 {
 	if (!dead)
 	{
-	if (!obj_player.swimming)
+	if (!obj_player.swimming && !obj_player.dead)
 	{
 		if (target != obj_player) { target = obj_player; }
 		
@@ -82,8 +111,88 @@ function scr_ant()
 	else
 	{
 		// If dead
-		instance_create_depth(x+32,y-16,-1,obj_enemy);
-		instance_create_depth(x+32,y+16,-1,obj_enemy);
+		//instance_create_depth(x+32,y-16,-1,obj_enemy);
+		//instance_create_depth(x+32,y+16,-1,obj_enemy);
+		instance_destroy();
+	}
+}
+
+
+function scr_snake()
+{
+	if (!dead)
+	{
+	if (!obj_player.dead)
+	{
+		if (target != obj_player) { target = obj_player; }
+		
+		if (distance_to_object(target) <= 16)
+		{
+			move_towards_point(obj_player.x, obj_player.y, chaseSpeed);
+		}
+		else
+		{
+			move_towards_point(obj_player.x+followOffsetX, obj_player.y+followOffsetY, chaseSpeed);
+		}
+	}
+	
+	
+	if (target.x < x && image_xscale > 0) { image_xscale = image_xscale * -1; }
+	if (target.x > x && image_xscale < 0) { image_xscale = image_xscale * -1; }
+	}
+	else
+	{
+		// If dead
+		instance_destroy();
+	}
+}
+
+
+
+function scr_frog()
+{
+	if (!dead)
+	{
+	if (!obj_player.dead)
+	{
+		
+		if (jumpTimer < jumpTimerMAX)
+		{
+			jumpTimer++;
+			targetPosX = obj_player.x + irandom_range(-4,4);
+			targetPosY = obj_player.y + irandom_range(-4,4);
+		}
+		else
+		{
+			if (jumpingTimer < jumpingTimerMAX)
+			{
+				image_index = 1;
+				jumpingTimer++;
+				if (distance_to_point(targetPosX,targetPosY) > 1)
+				{
+					move_towards_point(targetPosX,targetPosY,speeed);
+				}
+			}
+			else
+			{
+				speeed = random_range(0.5,2);
+				image_index = 0;
+				jumpingTimer = 0;
+				jumpingTimerMAX = irandom_range(10,30)*speeed;
+				speed = 0;
+				jumpTimer = 0;
+				jumpTimerMAX = irandom_range(5,45);
+			}
+		}
+	}
+	
+	
+	if (target.x < x && image_xscale > 0) { image_xscale = image_xscale * -1; }
+	if (target.x > x && image_xscale < 0) { image_xscale = image_xscale * -1; }
+	}
+	else
+	{
+		// If dead
 		instance_destroy();
 	}
 }
