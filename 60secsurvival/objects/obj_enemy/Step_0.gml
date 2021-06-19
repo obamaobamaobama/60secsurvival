@@ -1,17 +1,18 @@
-
-
-if (!spawned)
+if ready = 1
 {
-	spawnTimer++
-	if (spawnTimer > spawnTimerMAX)
+	if (!spawned)
 	{
-		spawned = true;
-		scr_enemyCreate(enemyType);
+		spawnTimer++
+		if (spawnTimer > spawnTimerMAX)
+		{
+			spawned = true;
+			scr_enemyCreate(enemyType);
+		}
 	}
-}
-else
-{
-	scr_enemyStep(enemyType);
-}
+	else
+	{
+		scr_enemyStep(enemyType);
+	}
 
-depth = -y;
+	depth = -y;
+}

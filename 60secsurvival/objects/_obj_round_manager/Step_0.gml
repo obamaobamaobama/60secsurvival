@@ -22,7 +22,7 @@ if (secondsRemaining < 0 && !night)
 	//instance_destroy(obj_darken);
 	night = true;
 	
-	//
+	
 	instance_create_depth(room_width/2, room_height/2, -1, obj_enemySpawner);
 }
 

@@ -27,5 +27,6 @@ else
 }
 
 
-var rr = random_range(-8,8);
-draw_sprite_ext(sprite_index,0,(view_get_wport(0)/2)+rr,(view_get_hport(0)/2)+rr,1,1,0,c_white,alpha);
+var rr1 = random_range(-4,4);
+var rr2 = random_range(-4,4);
+draw_sprite_ext(sprite_index,0,(view_get_wport(0)/2)+rr1,(view_get_hport(0)/2)+rr2,1,1,0,c_white,alpha);

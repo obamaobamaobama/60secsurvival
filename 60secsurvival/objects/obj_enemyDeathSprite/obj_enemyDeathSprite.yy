@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_enemyDeath",
-    "path": "sprites/spr_enemyDeath/spr_enemyDeath.yy",
+    "name": "spr_explosion",
+    "path": "sprites/spr_explosion/spr_explosion.yy",
   },
   "solid": false,
   "visible": true,

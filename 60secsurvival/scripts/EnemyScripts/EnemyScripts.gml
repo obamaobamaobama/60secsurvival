@@ -12,8 +12,8 @@ function scr_enemyCreate(_enemyType)
 	{
 		sprite_index = spr_ant;
 		target = obj_player;
-		chaseSpeed = obj_player.moveSpeed - (obj_player.moveSpeed/10);
-		walkAroundSpeed = obj_player.moveSpeed - (obj_player.moveSpeed/25);;
+		chaseSpeed = (obj_player.moveSpeed - (obj_player.moveSpeed/10))/clamp(5-(_obj_game_manager.nightsSurvived),1,999);
+		walkAroundSpeed = (obj_player.moveSpeed - (obj_player.moveSpeed/25))/clamp(5-(_obj_game_manager.nightsSurvived),1,999);
 		healthh = 1;
 		followOffsetX = random_range(-16,16);
 		followOffsetY = random_range(-16,16);
@@ -25,7 +25,7 @@ function scr_enemyCreate(_enemyType)
 	{
 		sprite_index = spr_snake;
 		target = obj_player;
-		chaseSpeed = obj_player.moveSpeed - (obj_player.moveSpeed/40);
+		chaseSpeed = (obj_player.moveSpeed - (obj_player.moveSpeed/40))/clamp(5-(_obj_game_manager.nightsSurvived),1,999);
 		healthh = 1;
 		followOffsetX = random_range(-16,16);
 		followOffsetY = random_range(-16,16);

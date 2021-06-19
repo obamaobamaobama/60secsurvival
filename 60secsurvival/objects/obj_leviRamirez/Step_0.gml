@@ -1,11 +1,16 @@
-
-
-if (place_meeting(x,y,obj_player) && keyboard_check(ord("L")))
+if instance_exists(obj_player)
 {
-	levi = true;
-}
-else
-{
-	levi = false;
-	obj_player.visible = true;
+	if distance_to_object(obj_player) < 64
+	{
+
+		if (place_meeting(x,y,obj_player) && keyboard_check(ord("L")))
+		{
+			levi = true;
+		}
+		else
+		{
+			levi = false;
+			obj_player.visible = true;
+		}
+	}
 }

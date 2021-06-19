@@ -1,11 +1,9 @@
-
+ready = 0;
 
 if (distance_to_object(obj_player) < 64)
 {
 	instance_destroy();
 }
-
-
 
 enemyType = choose("ant","snake","frog");
 
@@ -14,3 +12,5 @@ enemyType = choose("ant","snake","frog");
 spawned = false;
 spawnTimer = 0;
 spawnTimerMAX = irandom_range(25,45);
+
+alarm[0] = 20;

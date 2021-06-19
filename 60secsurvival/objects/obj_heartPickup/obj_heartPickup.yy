@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_heartPickup",
-    "path": "sprites/spr_heartPickup/spr_heartPickup.yy",
+    "name": "spr_heart",
+    "path": "sprites/spr_heart/spr_heart.yy",
   },
   "solid": false,
   "visible": true,

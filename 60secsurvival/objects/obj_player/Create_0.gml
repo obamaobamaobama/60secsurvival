@@ -1,5 +1,7 @@
 playerCreate();
 
+camx = camera_get_view_x(view_camera[0]);
+camy = camera_get_view_y(view_camera[0]);
 
 // Font
 mapString = " !'()/0123456789:;<=>?abcdefghijklmnopqrstuvwxyz[\]{|}ABCDE"
@@ -11,6 +13,8 @@ draw_set_font(bitmapFont);
 // House position
 houseX = obj_house.x;
 houseY = obj_house.y;
+
+visible = 1;
 
 hurtTimer = 0;
 hurtTimerMAX = 20;

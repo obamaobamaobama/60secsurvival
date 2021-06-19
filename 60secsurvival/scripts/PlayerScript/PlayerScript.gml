@@ -124,7 +124,7 @@ function playerStep()
 	
 	// Hurt by enemy
 	var enemy = instance_place(x,y,obj_enemy);
-	if (enemy != noone && enemy.spawned)
+	if (enemy != noone && enemy.spawned) and !instance_exists(obj_roomtransition)
 	{
 		if (hurtTimer >= hurtTimerMAX)
 		{
@@ -140,19 +140,20 @@ function playerStep()
 	// Enter House
 	var house = instance_place(x,y,obj_house);
 	if (house != noone && house.currentTier == 4)
-	{
-		audio_stop_all();
-		_obj_game_manager.playerHealth = healthh;
-		_obj_game_manager.nightsSurvived += 1;
-		room_goto(rm_gameplay);
+	{		
+		if !instance_exists(obj_roomtransition)
+		{
+			f = instance_create_depth(0,0,-9999999,obj_roomtransition);
+			f.roomrestart = 1;
+			visible = 0;
+			
+			_obj_game_manager.playerHealth = healthh;
+			_obj_game_manager.nightsSurvived += 1;
+		}
 	}
 	
 	
 	if (healthh < 1) { dead = true }
-	
-	// DEBUG
-	if (keyboard_check_pressed(ord("Y"))) { healthh -= 1; }
-	
 	
 	}
 	else
@@ -166,19 +167,5 @@ function playerStep()
 		_obj_game_manager._audioBGMcurrent2 = 0;
 		
 		if (sprite_index != spr_playerDead) { sprite_index = spr_playerDead; image_speed = 1; }
-		
-		if (image_xscale > 0)
-		{
-			image_xscale -= 0.03;
-			image_yscale -= 0.03;
-			image_angle += deathSpin;
-		}
-		else
-		{
-			if (instance_number(obj_tombstone) == 0)
-			{
-				instance_create_depth(x,y,-1,obj_tombstone);
-			}
-		}
 	}
 }

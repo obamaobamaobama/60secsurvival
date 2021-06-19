@@ -1,3 +1,1 @@
-
-
-draw_sprite_ext(spr_darken,0,0,0,100,100,0,c_white,alpha);
+draw_sprite_ext(spr_darken,0,0,0,1000,1000,0,c_white,alpha);
