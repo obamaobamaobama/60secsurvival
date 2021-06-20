@@ -159,7 +159,7 @@ function playerStep()
 	else
 	{
 		// IF DEAD
-		// NG API (Add highscore)
+		if !audio_is_playing(bgm_death) {audio_play_sound(bgm_death,1,false)}
 		if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_gameplay); _obj_game_manager.playerHealth = 5; }
 		if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_mainMenu); _obj_game_manager.playerHealth = 5 }
 		

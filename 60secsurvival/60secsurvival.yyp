@@ -52,6 +52,7 @@
     {"id":{"name":"sfx_hurt3","path":"sounds/sfx_hurt3/sfx_hurt3.yy",},"order":15,},
     {"id":{"name":"spr_log","path":"sprites/spr_log/spr_log.yy",},"order":11,},
     {"id":{"name":"sfx_rock2","path":"sounds/sfx_rock2/sfx_rock2.yy",},"order":6,},
+    {"id":{"name":"bgm_death","path":"sounds/bgm_death/bgm_death.yy",},"order":5,},
     {"id":{"name":"obj_houseSpawn","path":"objects/obj_houseSpawn/obj_houseSpawn.yy",},"order":17,},
     {"id":{"name":"sfx_footstep1","path":"sounds/sfx_footstep1/sfx_footstep1.yy",},"order":23,},
     {"id":{"name":"obj_roomtransition","path":"objects/obj_roomtransition/obj_roomtransition.yy",},"order":32,},
@@ -96,6 +97,7 @@
     {"id":{"name":"rm_gameplay","path":"rooms/rm_gameplay/rm_gameplay.yy",},"order":2,},
     {"id":{"name":"obj_roomintro","path":"objects/obj_roomintro/obj_roomintro.yy",},"order":31,},
     {"id":{"name":"FunctionLibrary","path":"scripts/FunctionLibrary/FunctionLibrary.yy",},"order":4,},
+    {"id":{"name":"bgm_title","path":"sounds/bgm_title/bgm_title.yy",},"order":4,},
     {"id":{"name":"spr_leviRamirez","path":"sprites/spr_leviRamirez/spr_leviRamirez.yy",},"order":36,},
     {"id":{"name":"spr_mainMenu","path":"sprites/spr_mainMenu/spr_mainMenu.yy",},"order":28,},
     {"id":{"name":"obj_bg","path":"objects/obj_bg/obj_bg.yy",},"order":3,},
@@ -161,7 +163,9 @@
   "TextureGroups": [
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"fcr_ngAPI.extension.gmx","resourceType":"GMIncludedFile",},
+  ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",
   },

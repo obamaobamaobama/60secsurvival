@@ -1,5 +1,8 @@
 playerCreate();
 
+audio_stop_sound(bgm_title);
+audio_stop_sound(bgm_death);
+
 camx = camera_get_view_x(view_camera[0]);
 camy = camera_get_view_y(view_camera[0]);
 
