@@ -14,3 +14,5 @@ spawnTimer = 0;
 spawnTimerMAX = irandom_range(25,45);
 
 alarm[0] = 20;
+
+deathDirection = 1;

@@ -12,14 +12,17 @@ function playerCreate()
 	dead = false;
 	deathSpin = choose(-5,5);
 	footStep = 2;
+	
+	playedDeathMusic = false;
+	updateScore = false;
 }
 
 
 function playerStep()
 {
 	// DEBUG
-	if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); room_restart(); }
-	if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); room_goto(rm_mainMenu); }
+	//if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); room_restart(); }
+	//if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); room_goto(rm_mainMenu); }
 	
 	
 	
@@ -97,6 +100,7 @@ function playerStep()
 	
 	function playerAttack()
 	{
+		attackTimer = attackTimerMAX+1;
 		if (attackTimer >= attackTimerMAX)
 		{
 			var sfx = choose(sfx_attack1,sfx_attack2,sfx_attack3);
@@ -159,12 +163,19 @@ function playerStep()
 	else
 	{
 		// IF DEAD
-		if !audio_is_playing(bgm_death) {audio_play_sound(bgm_death,1,false)}
+		if (!audio_is_playing(bgm_death) && !playedDeathMusic) { audio_play_sound(bgm_death,1,false); playedDeathMusic = true; }
 		if (keyboard_check_pressed(ord("R"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_gameplay); _obj_game_manager.playerHealth = 5; }
 		if (keyboard_check_pressed(ord("T"))) { audio_stop_all(); _obj_game_manager.nightsSurvived = 0; room_goto(rm_mainMenu); _obj_game_manager.playerHealth = 5 }
 		
+		if (_obj_ngbaby.ngLoggedIn && !updateScore)
+		{
+			_obj_ngbaby.NG_post_score = true;
+			updateScore = true;
+		}
+		
 		_obj_game_manager._audioBGMcurrent = 0;
 		_obj_game_manager._audioBGMcurrent2 = 0;
+		
 		
 		if (sprite_index != spr_playerDead) { sprite_index = spr_playerDead; image_speed = 1; }
 	}

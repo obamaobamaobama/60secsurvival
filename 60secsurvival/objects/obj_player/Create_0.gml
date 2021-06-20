@@ -31,7 +31,7 @@ image_speed = 0;
 
 if (_obj_game_manager.nightsSurvived == 0)
 {
-	instance_create_depth(8,472,-1,obj_leviRamirez);
+	instance_create_depth(0,472,-1,obj_leviRamirez);
 }
 
 display_set_gui_size(view_wport[0], view_hport[0]);
@@ -46,4 +46,14 @@ if (!audio_is_playing(bgm_The_Unknown))
 if (!audio_is_playing(bgm_The_Unknown2))
 {
 	audio_play_sound(bgm_The_Unknown2, 1, true);
+}
+
+
+
+
+
+// Post to leaderboard
+if (_obj_ngbaby.ngLoggedIn)
+{
+	_obj_ngbaby.NG_post_score = true;
 }

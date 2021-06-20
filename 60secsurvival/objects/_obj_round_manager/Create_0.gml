@@ -7,7 +7,7 @@ secondsInRound = 0;
 
 // Dynamically adjusted
 secondsBeforeNight = 2;
-if (_obj_game_manager.nightsSurvived <= 25)
+if (_obj_game_manager.nightsSurvived <= 15)
 {
 	secondsBeforeNight -= (_obj_game_manager.nightsSurvived/10);
 }

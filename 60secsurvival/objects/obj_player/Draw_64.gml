@@ -23,8 +23,6 @@ if (healthh < 1) { healthhhhh = ""; dead = true; }
 if (healthh == 1) { healthhhhh = "A"; }
 if (healthh == 2) { healthhhhh = "AA"; }
 if (healthh == 3) { healthhhhh = "AAA"; }
-if (healthh == 4) { healthhhhh = "AAAA"; }
-if (healthh == 5) { healthhhhh = "AAAAA"; }
 draw_text(8,view_get_hport(0)-12,healthhhhh);
 
 

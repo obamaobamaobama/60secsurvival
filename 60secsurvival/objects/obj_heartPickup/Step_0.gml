@@ -2,7 +2,7 @@
 
 if (place_meeting(x,y,obj_player))
 {
-	if (!obj_player.dead && obj_player.healthh < 5)
+	if (!obj_player.dead && obj_player.healthh < 3)
 	{
 		obj_player.healthh += 1;
 		audio_play_sound(sfx_kiss,1,0);

@@ -2,7 +2,7 @@
 
 
 nightsSurvived = 0;
-playerHealth = 5;
+playerHealth = 3;
 
 // How many seconds are added per resource parent spawned
 resourceTimeWorth = 0.5;
